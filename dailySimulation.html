@@ -12,7 +12,43 @@
   <script>
     const output = document.getElementById("output");
     
-    # ADD CODE HERE
+const activities = [
+      "Waking up and cuddling with my dog 🐶",
+      "Morning workout – cardio + weights 💪",
+      "Coffee + journaling ☕📝",
+      "Working on my class assignment 🧠",
+      "Cooking lunch – tofu stir-fry 🍽️",
+      "Evening walk while listening to a podcast 🎧",
+    ];
+
+    const moods = ["😊", "😤", "😎", "😴", "😵‍💫", "😂"];
+    const twist = () => {
+      const mood = moods[Math.floor(Math.random() * moods.length)];
+      return `Unexpected mood swing! Current vibe: ${mood}`;
+    };
+
+    function runSchedule() {
+      let time = 0;
+      activities.forEach((activity, index) => {
+        setTimeout(() => {
+          output.innerHTML += `<div>${activity}</div>`;
+        }, time);
+        time += 2000;
+        
+        if (index === 2) {
+          setTimeout(() => {
+            output.innerHTML += `<div style="color: red;">${twist()}</div>`;
+          }, time);
+          time += 2000;
+        }
+      });
+
+      setTimeout(() => {
+        output.innerHTML += `<div>Going to bed. Reflecting on the day. 🌙</div>`;
+      }, time + 1000);
+    }
+
+    runSchedule();
 
   </script>
 
